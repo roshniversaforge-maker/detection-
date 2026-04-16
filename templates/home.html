@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    /* Home Navigation */
+    .home-nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 25px 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10;
+    }
+
+    .home-brand {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-light); /* White text */
+    }
+
+    .home-actions {
+        display: flex;
+        gap: 15px;
+    }
+
+    .btn-nav {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-light);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 24px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        backdrop-filter: blur(10px);
+    }
+
+    .btn-nav:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        width: 100vw;
+        padding: 0 20px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .hero-card {
+        padding: 60px 40px;
+        max-width: 900px;
+        width: 100%;
+        text-align: center;
+    } /* Inheriting colors from .glass-container */
+
+    h1.hero-title {
+        font-size: 4rem;
+        font-family: 'Inter', sans-serif;
+        font-weight: 800;
+        color: var(--text-light);
+        background: none;
+        -webkit-text-fill-color: initial;
+        margin-bottom: 25px;
+        letter-spacing: -1px;
+    }
+
+    .highlight-blue {
+        color: #667eea; /* Soft bright purplish-blue matching theme */
+    }
+
+    p.hero-subtitle {
+        font-size: 1.15rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 750px;
+        margin: 0 auto;
+    }
+
+    /* Keep the modal title white too since we're using dark mode exclusively now */
+    #aboutModal h2 {
+        color: var(--text-light);
+        background: none;
+        -webkit-text-fill-color: initial;
+    }
+</style>
+
+<!-- Home Navigation -->
+<nav class="home-nav">
+    <div class="home-brand">Review Detector</div>
+    <div class="home-actions">
+        <button class="btn-nav" onclick="document.getElementById('aboutModal').style.display='flex'">About Us</button>
+        <a href="{{ url_for('login') }}" class="btn-nav">Login / Sign In</a>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero-container">
+    <div class="hero-card glass-container">
+        <h1 class="hero-title">Stop being <span class="highlight-blue">fooled</span></h1>
+        <p class="hero-subtitle">Our AI analyzes linguistic patterns and review history to detect fake product review feedback on E-commerce platforms.</p>
+    </div>
+</div>
+{% endblock %}

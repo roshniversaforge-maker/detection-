@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="glass-container">
+    <h2>Welcome Back</h2>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Login Now</button>
+    </form>
+    
+    <div class="auth-links">
+        <p><a href="{{ url_for('forgot_password') }}">Forgot Password?</a></p>
+        <p style="margin-top: 10px;">Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
+        <p><a href="#" onclick="document.getElementById('aboutModal').style.display='flex'">About Us</a></p>
+    </div>
+</div>
+{% endblock %}

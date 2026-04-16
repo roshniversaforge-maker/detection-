@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <h2><i class="fa-solid fa-shield-halved"></i> ReviewShield</h2>
+        </div>
+        <div class="nav-links">
+            <span style="margin-right: 15px; font-weight: 600;">Welcome, {{ username }}</span>
+            <a href="{{ url_for('logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
+        </div>
+    </nav>
+
+    <div class="glass-container analyzer-box">
+        <h2>Analyze Product Reviews</h2>
+        <p style="color: var(--text-muted); margin-bottom: 20px;">
+            Enter an Amazon or Flipkart product URL below to verify the authenticity of its reviews.
+        </p>
+        
+        <input type="text" id="url-input" class="form-control" placeholder="https://www.amazon.in/dp/B08...">
+        <button id="analyze-btn" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i> Detect Fake Reviews</button>
+        
+        <div id="loader" class="loader"></div>
+        <div id="error-msg" style="color: #ff416c; margin-top: 15px; display: none;"></div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results-section" style="display: none;">
+        <div class="stats-container">
+            <div class="glass-container stat-card">
+                <i class="fa-solid fa-comments fa-2x" style="color: #667eea"></i>
+                <h3 id="total-reviews">0</h3>
+                <p>Total Reviews Analyzed</p>
+            </div>
+            <div class="glass-container stat-card" style="box-shadow: 0 4px 15px rgba(56, 239, 125, 0.2);">
+                <i class="fa-solid fa-check-circle fa-2x" style="color: #38ef7d"></i>
+                <h3 id="genuine-pct" style="color: #38ef7d">0%</h3>
+                <p>Genuine</p>
+            </div>
+            <div class="glass-container stat-card" style="box-shadow: 0 4px 15px rgba(255, 75, 43, 0.2);">
+                <i class="fa-solid fa-times-circle fa-2x" style="color: #ff4b2b"></i>
+                <h3 id="fake-pct" style="color: #ff4b2b">0%</h3>
+                <p>Fake</p>
+            </div>
+        </div>
+
+        <div class="reviews-container glass-container" style="max-width: 1200px; padding: 30px;">
+            <h2 style="text-align: left; margin-bottom: 20px;">Detailed Analysis</h2>
+            <div id="reviews-list">
+                <!-- Reviews injected dynamically by JS -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
