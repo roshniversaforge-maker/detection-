@@ -2,7 +2,7 @@
 
 {% block content %}
 <style>
-    /* Home Navigation */
+    /* Home Navigation overrides for landing page */
     .home-nav {
         position: absolute;
         top: 0;
@@ -18,7 +18,7 @@
     .home-brand {
         font-size: 1.5rem;
         font-weight: 700;
-        color: var(--text-light); /* White text */
+        color: var(--text-main);
     }
 
     .home-actions {
@@ -26,12 +26,12 @@
         gap: 15px;
     }
 
-    .btn-nav {
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--text-light);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+    .btn-light-nav {
+        background: rgba(255, 255, 255, 0.8);
+        color: var(--text-main);
+        border: 1px solid rgba(0, 0, 0, 0.05);
         padding: 10px 24px;
-        border-radius: 20px;
+        border-radius: 8px;
         text-decoration: none;
         font-weight: 600;
         font-size: 0.95rem;
@@ -40,9 +40,10 @@
         backdrop-filter: blur(10px);
     }
 
-    .btn-nav:hover {
-        background: rgba(255, 255, 255, 0.2);
+    .btn-light-nav:hover {
+        background: #ffffff;
         transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     /* Hero Section */
@@ -59,40 +60,37 @@
     }
 
     .hero-card {
+        background: rgba(255, 255, 255, 0.6); /* Translucent white card from image 1 */
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
         padding: 60px 40px;
         max-width: 900px;
         width: 100%;
         text-align: center;
-    } /* Inheriting colors from .glass-container */
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+    }
 
     h1.hero-title {
         font-size: 4rem;
-        font-family: 'Inter', sans-serif;
-        font-weight: 800;
-        color: var(--text-light);
-        background: none;
-        -webkit-text-fill-color: initial;
+        font-family: 'Georgia', serif;
+        font-weight: bold;
+        color: var(--text-main);
         margin-bottom: 25px;
         letter-spacing: -1px;
     }
 
     .highlight-blue {
-        color: #667eea; /* Soft bright purplish-blue matching theme */
+        color: #4285F4;
     }
 
     p.hero-subtitle {
         font-size: 1.15rem;
         line-height: 1.6;
-        color: rgba(255, 255, 255, 0.8);
+        color: var(--text-muted);
         max-width: 750px;
         margin: 0 auto;
-    }
-
-    /* Keep the modal title white too since we're using dark mode exclusively now */
-    #aboutModal h2 {
-        color: var(--text-light);
-        background: none;
-        -webkit-text-fill-color: initial;
     }
 </style>
 
@@ -100,14 +98,14 @@
 <nav class="home-nav">
     <div class="home-brand">Review Detector</div>
     <div class="home-actions">
-        <button class="btn-nav" onclick="document.getElementById('aboutModal').style.display='flex'">About Us</button>
-        <a href="{{ url_for('login') }}" class="btn-nav">Login / Sign In</a>
+        <button class="btn-light-nav" onclick="document.getElementById('aboutModal').style.display='flex'">About Us</button>
+        <a href="{{ url_for('login') }}" class="btn-light-nav">Login / Sign In</a>
     </div>
 </nav>
 
 <!-- Hero Section -->
 <div class="hero-container">
-    <div class="hero-card glass-container">
+    <div class="hero-card">
         <h1 class="hero-title">Stop being <span class="highlight-blue">fooled</span></h1>
         <p class="hero-subtitle">Our AI analyzes linguistic patterns and review history to detect fake product review feedback on E-commerce platforms.</p>
     </div>
