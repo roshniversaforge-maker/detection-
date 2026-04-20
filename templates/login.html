@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="glass-container">
-    <h2>Welcome Back</h2>
+<div class="card-container auth-card">
+    <h2 style="text-align: center; margin-bottom: 5px;">Fake Review Detector</h2>
+    <p class="subtitle">Identify Fake Product Reviews with AI</p>
     
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -17,22 +18,27 @@
     <form method="POST" action="{{ url_for('login') }}">
         <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
         </div>
         
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
         </div>
         
-        <button type="submit" class="btn btn-primary">Login Now</button>
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Login</button>
     </form>
     
     <div class="auth-links">
-        <p><a href="{{ url_for('forgot_password') }}">Forgot Password?</a></p>
-        <p style="margin-top: 10px;">Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
-        <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 0;">
-        <p><a href="#" onclick="document.getElementById('aboutModal').style.display='flex'">About Us</a></p>
+        <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 25px 0;">
+        <p style="margin-bottom: 10px;">Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a></p>
+        <p><a href="{{ url_for('forgot_password') }}">Forgot password?</a></p>
+        <p style="margin-top: 15px; font-size:0.8rem;"><a href="#" onclick="document.getElementById('aboutModal').style.display='flex'" style="color: #94a3b8; font-weight: normal;">About the Project</a></p>
+    </div>
+    <div>
+        <center><p>I am not robot</p>
+        <input type="checkbox" id="I am not a robort" style="font-size:small;" color="highlight-blue">
+        </center>
     </div>
 </div>
 {% endblock %}
